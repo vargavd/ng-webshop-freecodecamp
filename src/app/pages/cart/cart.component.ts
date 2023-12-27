@@ -52,6 +52,7 @@ export class CartComponent implements OnInit {
   }
 
   onRemoveFromCart(item: CartItem) :void {
+    console.log('mivan???');
     this.cartService.removeFromCart(item);
   }
 
