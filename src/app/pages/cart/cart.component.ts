@@ -67,13 +67,14 @@ export class CartComponent implements OnInit {
   }
 
   onCheckout(): void {
-    // this.http.post('http://localhost:4242/checkout', {
-    //   items: this.cart.items
-    // }).subscribe(async(res:any) => {
-    //   let stripe = await loadStripe('pk_test_51ORzUrCmfJ6ySTF7F6S9OZXYyBWw1CDrZKjV7UqJMrnoWe5erXdoMJuw1F3HIibttJFpH3ENXIuP6ibuThQ9Tfvh00M2wnJ9gr');
-    //   stripe?.redirectToCheckout({
-    //     sessionId: res
-    //   });
-    // });
+    this.http.post('http://localhost:4242/checkout', {
+      items: this.cart.items
+    }).subscribe(async(res:any) => {
+      let stripe = await loadStripe('pk_test_51ORzUrCmfJ6ySTF7F6S9OZXYyBWw1CDrZKjV7UqJMrnoWe5erXdoMJuw1F3HIibttJFpH3ENXIuP6ibuThQ9Tfvh00M2wnJ9gr');
+      console.log(res);
+      stripe?.redirectToCheckout({
+        sessionId: res.id
+      });
+    });
   }
 }
